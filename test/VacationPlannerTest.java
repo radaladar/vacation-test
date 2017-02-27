@@ -7,11 +7,11 @@ import static org.junit.Assert.*;
 
 public class VacationPlannerTest {
 
-    ArrayList<String> onePlace;
-    ArrayList<String> simpleRoute;
-    ArrayList<String> simpleRouteWithNames;
-    ArrayList<String> oneDependeny;
-    ArrayList<String> multipleDependencies;
+    ArrayList<String> onePlace = new ArrayList<>();
+    ArrayList<String> simpleRoute = new ArrayList<>();
+    ArrayList<String> simpleRouteWithNames = new ArrayList<>();
+    ArrayList<String> oneDependeny = new ArrayList<>();
+    ArrayList<String> multipleDependencies = new ArrayList<>();
 
     @Before
     public void setup() {
