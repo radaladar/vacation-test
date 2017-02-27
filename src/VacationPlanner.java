@@ -1,8 +1,14 @@
 import java.util.ArrayList;
 
 public class VacationPlanner {
-    
+
     public static String plan(ArrayList<String> route) {
+        if (checkForBranches(route)) {
+            return "Error: input has branches";
+        }
+        if (checkForLoop(route)) {
+            return "Error: input has a loop";
+        }
         StringBuilder plannedRoute = new StringBuilder("");
         for (String destination : route) {
             String currentDest = destination.split(" => ")[0];
@@ -23,8 +29,34 @@ public class VacationPlanner {
             if (!plannedRoute.toString().contains(currentDest)) {
                 plannedRoute.append(currentDest);
             }
-
         }
         return plannedRoute.toString();
+    }
+
+    public static boolean checkForBranches(ArrayList<String> route) {
+        ArrayList<String> dependencies = new ArrayList<>();
+        for (String destination : route) {
+            if (destination.split(" => ").length > 1) {
+                String dependency = destination.split(" => ")[1];
+                if (dependencies.contains(dependency)) {
+                    return true;
+                } else {
+                    dependencies.add(dependency);
+                }
+            }
+        }
+        return false;
+    }
+
+    public static boolean checkForLoop(ArrayList<String> route) {
+        int destinationCounter = 0;
+        int dependencyCounter = 0;
+        for (String destination : route) {
+            destinationCounter++;
+            if (destination.split(" => ").length > 1) {
+                dependencyCounter++;
+            }
+        }
+         return destinationCounter == dependencyCounter;
     }
 }

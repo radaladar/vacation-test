@@ -12,6 +12,8 @@ public class VacationPlannerTest {
     ArrayList<String> oneDependency = new ArrayList<>();
     ArrayList<String> multipleDependencies = new ArrayList<>();
     ArrayList<String> multipleDependencies2 = new ArrayList<>();
+    ArrayList<String> branches = new ArrayList<>();
+    ArrayList<String> loop = new ArrayList<>();
 
     @Before
     public void setup() {
@@ -38,15 +40,34 @@ public class VacationPlannerTest {
         multipleDependencies2.add("x => ");
         multipleDependencies2.add("y => ");
         multipleDependencies2.add("z => u");
+
+        branches.add("x => ");
+        branches.add("y => x");
+        branches.add("z => x");
+
+        loop.add("x => z");
+        loop.add("y => x");
+        loop.add("z => y");
     }
+
     @Test
     public void testOnePlace() {assertEquals("x", VacationPlanner.plan(onePlace));}
+
     @Test
     public void testSimpleRoute() {assertEquals("xyz", VacationPlanner.plan(simpleRoute));}
+
     @Test
     public void testOneDependency() {assertEquals("xzy", VacationPlanner.plan(oneDependency));}
+
     @Test
     public void testMultipleDependencies() {assertEquals("uxzwvy", VacationPlanner.plan(multipleDependencies));}
+
     @Test
     public void testMultipleDependencies2() {assertEquals("ywuzxv", VacationPlanner.plan(multipleDependencies2));}
+
+    @Test
+    public void testBranches() {assertEquals("Error: input has branches", VacationPlanner.plan(branches));}
+
+    @Test
+    public void testLoop() {assertEquals("Error: input has a loop", VacationPlanner.plan(loop));}
 }
