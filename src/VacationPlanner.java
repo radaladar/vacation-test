@@ -7,6 +7,6 @@ public class VacationPlanner {
         for (String destination : route) {
             plannedRoute.append(destination.split(" => ")[0]);
         }
-        return plannedRoute.toString().trim();
+        return plannedRoute.toString();
     }
 }

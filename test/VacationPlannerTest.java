@@ -23,7 +23,7 @@ public class VacationPlannerTest {
 
         simpleRouteWithNames.add("London => ");
         simpleRouteWithNames.add("Paris => ");
-        simpleRouteWithNames.add("Rome  => ");
+        simpleRouteWithNames.add("Rome => ");
 
         oneDependeny.add("x => ");
         oneDependeny.add("y => z");
